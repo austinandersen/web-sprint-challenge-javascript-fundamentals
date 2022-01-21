@@ -30,8 +30,10 @@ For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you ma
 
 function summation(number) {
   let sum = 0 
-  for(counter = 0; counter <= number; counter++){
-    sum = counter + sum 
+  let counter = 1
+  for(let i = 0; i < number; i++){
+    sum = counter + sum;
+    counter++; 
   }
   return sum
   }
@@ -130,7 +132,7 @@ const zooAnimals = [
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
 function add(num1, num2){
-    sum = num1 + num2;
+    let sum = num1 + num2;
     return sum;
   }
 
@@ -160,10 +162,10 @@ function greeting(firstName, lastName){
 /* 🐴🐴🐴 Step 1: Base Constructor 🐴🐴🐴
  Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
 */
-function CuboidMaker(length, width, height){
-  this.length = length
-  this.width = width
-  this.height = height
+function CuboidMaker(dimensions){
+  this.length = dimensions.length
+  this.width = dimensions.width
+  this.height = dimensions.height
 }
 
 
@@ -191,7 +193,8 @@ CuboidMaker.prototype.surfaceArea = function(){
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker 🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
-const cuboid = new CuboidMaker(4, 5, 5)
+let cuboidDimensions = {length: 4, width: 5, height: 5}
+const cuboid = new CuboidMaker(cuboidDimensions)
 
 
 
@@ -206,10 +209,10 @@ console.log(cuboid.surfaceArea()); // 130
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 class CuboidMakerTwo{
-  constructor(length, width, height){
-    this.length = length
-    this.width = width
-    this.height = height
+  constructor(dimensions){
+    this.length = dimensions.length
+    this.width = dimensions.width
+    this.height = dimensions.height
   }
   volume(){
     return this.length * this.width * this.height
@@ -218,7 +221,7 @@ class CuboidMakerTwo{
     return 2 * (this.length * this.width + this.length * this.height + this.width * this.height)
   }
 }
-const cuboidTwo = new CuboidMakerTwo(4, 5, 5);
+const cuboidTwo = new CuboidMakerTwo(cuboidDimensions);
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
 console.log(cuboidTwo.volume()); // 100
